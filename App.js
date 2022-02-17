@@ -1,24 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, Alert } from 'react-native';
+import { StatusBar, SafeAreaView, View } from 'react-native';
+import React from 'react';
+import MainView from './src/views/MainView';
+import { useFonts, Montserrat_400Regular, Montserrat_700Bold } from '@expo-google-fonts/montserrat';
+
 
 export default function App() {
+
+  const [fontsLoaded] = useFonts({
+    "MontserratRegular": Montserrat_400Regular,
+    "MontserratBold": Montserrat_700Bold,
+  });
+
+  if (!fontsLoaded) {
+    return <View></View>;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Welcome to the Project</Text>
-      <StatusBar style="auto" />
-      <Button
-        title="Press me"
-        onPress={() => Alert.alert('Simple Button pressed')}
-      />
-    </View>
+    <SafeAreaView>
+      <StatusBar />
+      <MainView />
+    </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

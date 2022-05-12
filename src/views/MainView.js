@@ -6,20 +6,28 @@ import logo from '../../assets/logo.png';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
+import PersonalText from "../components/Text";
+
 export default function MainView() {
-    return <>
-        <Image source={topo} style={styles.topo} ></Image>
-        <Text style={styles.title}>Walkthrougs Details</Text>
-        <View style={styles.container}>
-            <Text style={styles.name}>React Native</Text>
-            <View style={styles.reactNativeSection}>
-                <Image source={logo} style={styles.imageIcon}></Image>
-                <Text style={styles.details}>Walkthrougs Details</Text>
+    //or use fragment <> </>
+    return (
+        <View>
+            <View style={style.headerView}>
+                <Image source={topo} style={styles.topo} ></Image>
+                <PersonalText style={styles.title}>Walkthrougs Details</PersonalText>
             </View>
-            <Text style={styles.description}>Lorem ipsum dolor sit amet conseqtur adicipli elit. Scientiaru novae etatis.</Text>
-            <Text style={styles.price}>U$ 39,99</Text>
+            <View style={styles.container}>
+                <PersonalText style={styles.name}>React Native</PersonalText>
+                <View style={styles.reactNativeSection}>
+                    <Image source={logo} style={styles.imageIcon}></Image>
+                    <PersonalText style={styles.details}>Walkthrougs Details</PersonalText>
+                </View>
+                <PersonalText style={styles.description}>Lorem ipsum dolor sit amet conseqtur adicipli elit. Scientiaru novae etatis.</PersonalText>
+                <PersonalText style={styles.price}>U$ 39,99</PersonalText>
+            </View>
         </View>
-    </>
+    );
+
 }
 
 const styles = StyleSheet.create({
@@ -31,7 +39,7 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 20,
     },
-    reactNativeSection:{
+    reactNativeSection: {
         flexDirection: 'row',
         paddingVertical: 12,
     },
@@ -44,9 +52,9 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontWeight: 'bold',
         paddingTop: height / 2 - 350,
-        fontFamily: 'MontserratRegular',
+        fontWeight: 'bold',
     },
-    imageIcon:{
+    imageIcon: {
         width: 32,
         height: 32,
     },
@@ -54,7 +62,7 @@ const styles = StyleSheet.create({
         fontSize: 26,
         lineHeight: 42,
         color: '#464646',
-        fontFamily: 'MontserratBold',
+        fontWeight: 'bold',
     },
     details: {
         fontSize: 16,
@@ -62,19 +70,19 @@ const styles = StyleSheet.create({
         color: '#464646',
         marginLeft: 12,
         paddingTop: 5,
-        fontFamily: 'MontserratRegular',
     },
     description: {
         color: '#a3a3a3',
         fontSize: 16,
-        lineHeight: 26,
-        fontFamily: 'MontserratRegular',
+        lineHeight: 26
     },
     price: {
         color: '#2A9F85',
         fontSize: 25,
         lineHeight: 26,
         marginTop: 8,
-        fontFamily: 'MontserratBold',
+        fontWeight: 'bold',
+    }, headerView: {
+        flex: 1,
     }
 });

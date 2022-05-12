@@ -1,25 +1,23 @@
-import { StatusBar, SafeAreaView, View } from 'react-native';
-import React from 'react';
-import MainView from './src/views/MainView';
-import { useFonts, Montserrat_400Regular, Montserrat_700Bold } from '@expo-google-fonts/montserrat';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import HomeScreen from './src/views/Home';
+import AboutScreen from './src/views/About';
+import LoginScreen from './src/views/Login';
 
-export default function App() {
+const Stack = createNativeStackNavigator();
 
-  const [fontsLoaded] = useFonts({
-    "MontserratRegular": Montserrat_400Regular,
-    "MontserratBold": Montserrat_700Bold,
-  });
-
-  if (!fontsLoaded) {
-    return <View></View>;
-  }
-
+function App() {
   return (
-    <SafeAreaView>
-      <StatusBar />
-      <MainView />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name='Home' component={HomeScreen} />
+        <Stack.Screen name='About' component={AboutScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
+export default App;

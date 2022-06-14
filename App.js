@@ -5,13 +5,16 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './src/views/Home';
 import AboutScreen from './src/views/About';
 import LoginScreen from './src/views/Login';
+import DatabaseInit from './db/DatabaseInit'
 
 const Stack = createNativeStackNavigator();
 
 function App() {
+
   useEffect(() => {
-    console.log('Teste');
+    new DatabaseInit();
   },[]);
+
   return (
     <NavigationContainer>
       <Stack.Navigator>

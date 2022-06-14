@@ -17,23 +17,23 @@ const sqlDelete = 'DELETE FROM USER WHERE id = ?';
 //CLASSE
 export default class DataManager {
     //MÉTODOS DA CLASSE
-    async createTableUser() {
+    static async createTableUser() {
         (await db).transaction(tx => {
             tx.executeSql(sqlCreate);
         });
     }
 
-    async openDatabase() {
+    static async openDatabase() {
         return await db;
     }
 
-    async createUser(user) {
+    static async createUser(user) {
         (await db).transaction(tx => {
             tx.executeSql(sqlInsert, [user.email, user.password]);
         });
     }
 
-    async getUser(id) {
+    static async getUser(id) {
         let user = null;
         (await db).transaction(tx => {
             tx.executeSql(sqlSelect, [id], (_, { rows }) => {
@@ -43,13 +43,13 @@ export default class DataManager {
         return user;
     }
 
-    async deleteUser(id) {
+    static async deleteUser(id) {
         (await db).transaction(tx => {
             tx.executeSql(sqlDelete, [id]);
         });
     }
 
-    async updateUser(user) {
+    static async updateUser(user) {
         (await db).transaction(tx => {
             tx.executeSql(sqlUpdate, [user.email, user.password]);
         });

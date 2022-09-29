@@ -4,8 +4,11 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Button } from 'react-native';
 //Importamos o AsyncStorage para recuperar os dados do usuário
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import DataManager from '../../data/DataManager';
 
 function HomeScreen({ navigation }) {
+    // const dataManager = new DataManager();
+    // const [users, setUsers] = useState([]);
     //Criamos um estado para armazenar o email e senha
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -13,6 +16,9 @@ function HomeScreen({ navigation }) {
     //Inicializa a função que recupera os dados do usuário do AsyncStorage
     useEffect(() => {
         getUser();
+        // dataManager.indexUser().then(users => {
+        //     setUsers(users);
+        // });
     }, []);
 
     //Função para recuperar os dados do usuário do AsyncStorage
